@@ -1,7 +1,7 @@
 let navbarMenu = document.querySelector('.navbar-menu');
 let dropdownIsOpen = false;
 
-// Handle dropdown menu toggle
+//Handles opening and closing of dropdowns
 navbarMenu.addEventListener('click', (event) => {
   if (event.target.classList.contains('dropdown-toggler')) {
     let target = document.querySelector(`#${event.target.dataset.dropdown}`);
@@ -17,7 +17,16 @@ navbarMenu.addEventListener('click', (event) => {
     }
   }
 });
-
+//Handles closing dropdowns if a user clicks outside
+navbarMenu.addEventListener('mouseover', (event) => {
+  if(event.target.classList.contains('dropdown-toggler')){
+    let target = document.querySelector(`#${event.target.dataset.dropdown}`);
+    if (target) {
+      target.classList.add('show');
+      dropdownIsOpen = true;
+    }
+  }
+});
 // Handle closing dropdowns if a user clicks outside
 document.body.addEventListener('click', (event) => {
   if (dropdownIsOpen) {
